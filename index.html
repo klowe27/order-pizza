@@ -10,7 +10,7 @@
   <body>
     <div class="container">
       <h1><img src="img/pizzaIcon.png">Pal's Pizza</h1>
-      <div class="row">
+      <div id="orderProcess" class="row">
         <div class="col-md-8 order">
           <h2>Customize your pizza</h2>
           <form id="pizzaForm">
@@ -69,18 +69,66 @@
               <p>Additional $1.00 each.</p>
               <input type="checkbox" name="extras" value="sauce"> Sauce
               <input type="checkbox" name="extras" value="cheese"> Cheese
-            <h3/div>
+            </div>
             <button type="submit" id="addPizza">Add Pizza</button>
           </form>
         </div>
-      </div>
+
         <div class="col-md-3 result">
           <h3>Order Details</h3>
-          <div id="total">
+          <div class="orderTotal">
             <h3>Total: $<span class="total">0.00</span></h3>
+          </div>
+          <div class="center">
+            <button id="checkout">Checkout</button>
           </div>
         </div>
       </div>
+
+      <div id="delivery" class="row">
+        <div class="col-md-12">
+          <h3>Enter Delivery Address</h3>
+          <form id="deliveryForm">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input id="name" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="street">Street</label>
+              <input id="street" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input id="city" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="state">State</label>
+              <input id="state" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="zip">Zip Code</label>
+              <input id="zip" type="number" class="form-control">
+            </div>
+            <div class="center">
+              <button type="submit">Review Order</button>
+          </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="reviewOrder" class="row">
+        <h3>Order Details</h3>
+        <div class="orderTotal">
+          <h3>Total: $<span class="total">0.00</span></h3>
+        </div>
+        <h3>Delivery Address</h3>
+        <div class="deliveryAddress">
+        </div>
+        <div class="center">
+          <button>Pay Now</button>
+        </div>
+      </div>
+
     </div>
   </body>
 </html>

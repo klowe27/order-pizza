@@ -10,6 +10,8 @@ body {
   background-color: rgba(255, 255, 255, 0.6);
   padding: 0px 50px 50px 50px;
   margin-bottom: 75px;
+  box-shadow: 0 3px 2px -2px gray;
+
 }
 
 h1 {
@@ -19,7 +21,7 @@ h1 {
   background-color: rgb(107,142,35);
   color: white;
   padding: 15px;
-  margin: 0px -600px 20px -600px;
+  margin: 0px -600px 10px -600px;
   box-shadow: 0 3px 2px -2px gray;
 }
 
@@ -44,13 +46,14 @@ p {
 
 button {
   border: none;
-  background-color: rgb(107,142,35);
+  background-color: gray;
   color: white;
   padding: 10px 15px 10px 15px;
+  margin-top: 15px;
 }
 
 button:hover{
-  background-color: gray;
+  background-color: rgb(107,142,35);
 }
 
 .radio {
@@ -66,15 +69,14 @@ input {
   background-color: rgba(255, 255, 255, 0.7);
   padding: 30px;
   text-align: center;
-  margin-left: 17px;
-  margin-right: 17px;
+  margin: 10px 17px 0px 17px;
 }
 
 .result {
   background-color: rgba(255, 255, 255, 0.7);
   padding: 15px;
-  margin-left: 17px;
-  margin-right: 17px;
+  margin: 10px 17px 0px 17px;
+  width: 350px;
 }
 
 .pizza {
@@ -85,4 +87,24 @@ input {
 
 img {
   margin-right: 15px;
+}
+
+.center {
+  text-align: center;
+}
+
+#delivery{
+  display: none;
+}
+
+#deliveryForm {
+  padding: 30px;
+}
+
+#reviewOrder {
+  display: none;
+}
+
+label {
+  margin-left: 15px;
 }

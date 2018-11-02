@@ -34,7 +34,7 @@ Pizza.prototype.calculateCost = function() {
 }
 
 Pizza.prototype.displayPizza = function() {
-  $("#total").before(
+  $(".orderTotal").before(
     "<div class='pizza'>" +
     "<p><strong>Size: </strong>" + this.size + "<br>" +
     "<strong>Crust: </strong>" + this.crust + "<br>" +
@@ -49,9 +49,24 @@ function currency(value) {
   return Number.parseFloat(value).toFixed(2);
 }
 
+function User(name, address){
+  this.name = name;
+  this.address = address;
+}
+
+User.prototype.displayUser = function(){
+  $(".deliveryAddress").before(
+    "<div class='pizza'>" +
+    "<p><strong>Name: </strong>" + this.name + "<br>" +
+    "<strong>Delivery Address: </strong>" + this.address +
+  "</div>")
+}
+
 // User Interface Logic
 $(document).ready(function(){
   var order = new Order();
+  var pizza;
+  var user;
   $("#pizzaForm").submit(function(event){
     event.preventDefault();
     var size = $("input:radio[name=size]:checked").val();
@@ -67,7 +82,7 @@ $(document).ready(function(){
       extras.push(extra);
     });
 
-    var pizza = new Pizza (size, crust, toppings, extras);
+    pizza = new Pizza (size, crust, toppings, extras);
 
     order.total += pizza.calculateCost();
     order.addPizza(pizza);
@@ -81,4 +96,25 @@ $(document).ready(function(){
     $("input:checkbox[name=extras]").prop('checked', false)
 
   });
+
+  $("#checkout").click(function(){
+    $("#orderProcess").hide();
+    $("#delivery").show();
+  })
+
+  $("#deliveryForm").submit(function(event){
+    event.preventDefault();
+    var name = $("#name").val();
+    var street = $("#street").val();
+    var city = $("#city").val();
+    var state = $("#state").val();
+    var zip = $("#zip").val();
+    var address = street + " " + city + ", " + state + " " + zip;
+
+    user = new User(name, address);
+
+    $("#delivery").hide();
+    $("#reviewOrder").show();
+    user.displayUser();
+  })
 });
