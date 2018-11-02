@@ -1,6 +1,7 @@
 // Business Logic
 function Order() {
   this.pizzas = [];
+  this.total = 0;
 }
 
 Order.prototype.addPizza = function(pizza) {
@@ -16,20 +17,32 @@ function Pizza(size, crust, toppings, extras) {
 }
 
 Pizza.prototype.calculateCost = function() {
-  if (this.size === "small") {
+  if (this.size === "Small") {
     this.cost += 8;
-  } else if (this.size === "medium") {
+  } else if (this.size === "Medium") {
     this.cost += 10;
-  } else if (this.size === "large") {
+  } else if (this.size === "Large") {
     this.cost += 12;
   }
-  for (var i = 0; i < this.toppings.length - 2; i++) {
+  for (var i = 0; i < (this.toppings.length - 2); i++) {
     this.cost += .5;
   }
   for (var i = 0; i < this.extras.length; i++) {
     this.cost += 1;
   }
   return this.cost;
+}
+
+Pizza.prototype.displayPizza = function() {
+  $("#total").before(
+    "<div class='pizza'>" +
+    "<p><strong>Size: </strong>" + this.size + "<br>" +
+    "<strong>Crust: </strong>" + this.crust + "<br>" +
+    "<strong>Toppings: </strong>" + this.toppings.join(", ") + "<br>" +
+    "<strong>Extras: </strong>" + this.extras.join(", ") + "<br>" +
+    "<strong>Cost: </strong>$" + this.cost + "</p>" +
+    "</div>"
+  )
 }
 
 // User Interface Logic
@@ -50,12 +63,12 @@ $(document).ready(function(){
       extras.push(extra);
     });
     var pizza = new Pizza (size, crust, toppings, extras);
+    order.total += pizza.calculateCost();
     order.addPizza(pizza);
-    var cost = pizza.calculateCost();
-    console.log(size);
+    pizza.displayPizza();
+    $(".total").html(order.total);
     console.log(pizza);
     console.log(order);
-    console.log(cost);
 
   });
 });

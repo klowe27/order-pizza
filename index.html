@@ -15,19 +15,19 @@
           <label for="size">Select size:</label>
           <div class="radio">
             <label>
-              <input type="radio" name="size" value="small">
+              <input type="radio" name="size" value="Small">
               Small $8.00
             </label>
           </div>
           <div class="radio">
             <label>
-              <input type="radio" name="size" value="medium">
+              <input type="radio" name="size" value="Medium">
               Medium $10.00
             </label>
           </div>
           <div class="radio">
             <label>
-              <input type="radio" name="size" value="large">
+              <input type="radio" name="size" value="Large">
               Large $12.00
             </label>
           </div>
@@ -36,13 +36,13 @@
           <label for="size">Select crust:</label>
           <div class="radio">
             <label>
-              <input type="radio" name="crust" value="thin">
+              <input type="radio" name="crust" value="Thin">
               Thin
             </label>
           </div>
           <div class="radio">
             <label>
-              <input type="radio" name="crust" value="deep">
+              <input type="radio" name="crust" value="Deep">
               Deep dish
             </label>
           </div>
@@ -51,22 +51,26 @@
          <p>Select toppings:</p>
          <p>The first two toppings are free. Additional toppings are $.50 each.</p>
          <input type="checkbox" name="topping" value="pepperoni"> Pepperoni<br>
-         <input type="checkbox" name="topping" value="sausage">Sausage<br>
-         <input type="checkbox" name="topping" value="ham">Ham<br>
-         <input type="checkbox" name="topping" value="olives">Olives<br>
-         <input type="checkbox" name="topping" value="peppers">peppers<br>
+         <input type="checkbox" name="topping" value="sausage"> Sausage<br>
+         <input type="checkbox" name="topping" value="ham"> Ham<br>
+         <input type="checkbox" name="topping" value="olives"> Olives<br>
+         <input type="checkbox" name="topping" value="pepper"> Pepper<br>
+         <input type="checkbox" name="topping" value="onion"> Onion<br>
+         <input type="checkbox" name="topping" value="pineapple"> Pineapple<br>
        </div>
        <div class="form-group">
         <p>Select extras:</p>
         <p>Each extra is an additional $1.00.</p>
         <input type="checkbox" name="extras" value="sauce"> Sauce<br>
-        <input type="checkbox" name="extras" value="cheese">Cheese<br>
+        <input type="checkbox" name="extras" value="cheese"> Cheese<br>
       </div>
 
       <button type="submit" id="addPizza">Add Pizza</button>
       </form>
       <div class="result">
-
+        <div id="total">
+          <h3>Total: $<span class="total">0</span></h3>
+        </div>
       </div>
     </div>
   </body>
