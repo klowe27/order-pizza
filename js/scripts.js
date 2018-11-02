@@ -40,9 +40,13 @@ Pizza.prototype.displayPizza = function() {
     "<strong>Crust: </strong>" + this.crust + "<br>" +
     "<strong>Toppings: </strong>" + this.toppings.join(", ") + "<br>" +
     "<strong>Extras: </strong>" + this.extras.join(", ") + "<br>" +
-    "<strong>Cost: </strong>$" + this.cost + "</p>" +
+    "<strong>Cost: </strong>$" + currency(this.cost) + "</p>" +
     "</div>"
   )
+}
+
+function currency(value) {
+  return Number.parseFloat(value).toFixed(2);
 }
 
 // User Interface Logic
@@ -69,7 +73,8 @@ $(document).ready(function(){
     order.addPizza(pizza);
     pizza.displayPizza();
 
-    $(".total").html(order.total);
+    $(".total").html(currency(order.total));
+    $(".result").show();
 
     $("input:radio[name=size]").prop('checked', false);
     $("input:radio[name=crust]").prop('checked', false);

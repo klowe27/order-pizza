@@ -51,20 +51,23 @@
               </div>
               <div class="form-group">
                <h3>Select toppings</h3>
-               <p>The first two toppings are free. Additional toppings are $.50 each.</p>
-               <input type="checkbox" name="topping" value="pepperoni"> Pepperoni<br>
-               <input type="checkbox" name="topping" value="sausage"> Sausage<br>
+               <p>First two toppings are free. Additional toppings $.50 each.</p>
+               <span><strong>Meats: </strong></span>
+               <input type="checkbox" name="topping" value="pepperoni"> Pepperoni
+               <input type="checkbox" name="topping" value="sausage"> Sausage
+               <input type="checkbox" name="topping" value="salami"> Salami
                <input type="checkbox" name="topping" value="ham"> Ham<br>
-               <input type="checkbox" name="topping" value="olives"> Olives<br>
-               <input type="checkbox" name="topping" value="pepper"> Pepper<br>
-               <input type="checkbox" name="topping" value="onion"> Onion<br>
+               <span><strong>Veggies: </strong></span>
+               <input type="checkbox" name="topping" value="olives"> Olives
+               <input type="checkbox" name="topping" value="peppers"> Peppers
+               <input type="checkbox" name="topping" value="onions"> Onions
                <input type="checkbox" name="topping" value="pineapple"> Pineapple<br>
              </div>
              <div class="form-group">
               <h3>Select extras</h3>
-              <p>Each extra is an additional $1.00.</p>
-              <input type="checkbox" name="extras" value="sauce"> Sauce<br>
-              <input type="checkbox" name="extras" value="cheese"> Cheese<br>
+              <p>Additional $1.00 each.</p>
+              <input type="checkbox" name="extras" value="sauce"> Sauce
+              <input type="checkbox" name="extras" value="cheese"> Cheese
             </div>
             <button type="submit" id="addPizza">Add Pizza</button>
           </form>
@@ -73,7 +76,7 @@
         <div class="col-md-3 result">
           <h4>Order Details</h4>
           <div id="total">
-            <h2>Total: $<span class="total">0</span></h2>
+            <h4>Total: $<span class="total">0.00</span></h4>
           </div>
         </div>
 
