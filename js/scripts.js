@@ -13,6 +13,8 @@ function Pizza(size, crust, toppings, extras) {
   this.crust = crust;
   this.toppings = toppings;
   this.extras = extras;
+  this.toppingsCost = 0;
+  this.extrasCost = 0;
   this.cost = 0;
 }
 
@@ -25,11 +27,12 @@ Pizza.prototype.calculateCost = function() {
     this.cost += 12;
   }
   for (var i = 0; i < (this.toppings.length - 2); i++) {
-    this.cost += .5;
+    this.toppingsCost += .5;
   }
   for (var i = 0; i < this.extras.length; i++) {
-    this.cost += 1;
+    this.extrasCost += 1;
   }
+  this.cost += (this.extrasCost + this.toppingsCost);
   return this.cost;
 }
 
@@ -38,9 +41,9 @@ Pizza.prototype.displayPizza = function() {
     "<div class='pizza'>" +
     "<h4>" + this.size + "</h4>" +
     "<p><strong>Crust: </strong>" + this.crust + "<br>" +
-    "<strong>Toppings: </strong>" + this.toppings.join(", ") + "<br>" +
-    "<strong>Extras: </strong>" + this.extras.join(", ") + "<br>" +
-    "<strong>Cost: </strong>$" + currency(this.cost) + "</p>" +
+    "<strong>Toppings: </strong>" + this.toppings.join(', ') + " (+$" + currency(this.toppingsCost) + ")<br>" +
+    "<strong>Extras: </strong>" + this.extras.join(', ') + " (+$" + currency(this.extrasCost) + ")<br>" +
+    "<strong>Price: </strong>$" + currency(this.cost) + "</p>" +
     "</div>"
   )
 }
@@ -108,6 +111,7 @@ $(document).ready(function(){
       $("input:checkbox[name=topping]").prop('checked', false)
       $("input:checkbox[name=extras]").prop('checked', false)
     }
+    console.log(pizza);
   });
 
   $("#checkout").click(function(){
