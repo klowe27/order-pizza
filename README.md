@@ -1,17 +1,21 @@
-# _{Application Name}_
+# Order Pizza
 
-#### Description of application, 11.2.18
+#### Website to order a pizza, 11.2.18
 
 #### By Kristin Brewer-Lowe
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+This website lets users customize a pizza and see the cost of their pizza based on their pizza.
+
+## Specifications
+
+* 
 
 ## Setup/Installation Requirements
 
-* View directly:
-* To clone, in terminal use command $ git clone
+* View directly: https://klowe27.github.io/order-pizza
+* To clone, in terminal use command $ git clone https://github.com/klowe27/order-pizza.git
 * Then, open index.html in any browser
 
 ## Known Bugs
