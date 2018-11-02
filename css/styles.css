@@ -4,33 +4,39 @@ body {
   background-repeat: no-repeat;
   background-color: gray;
   background-size: cover;
-  font-family: helvetica, sans-serif;
-  font-weight: lighter;
+  /* font-family: helvetica, sans-serif; */
 }
 
 .container {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.6);
   padding: 0px 50px 50px 50px;
   margin-bottom: 75px;
 }
 
 h1 {
   text-align: center;
+  font-weight: 200;
+  font-size: 50px;
   background-color: rgb(107,142,35);
   color: white;
   padding: 15px;
   margin: 0px -600px 20px -600px;
-  box-shadow: 0 4px 2px -2px gray;
+  box-shadow: 0 3px 2px -2px gray;
 }
 
 h2 {
-  color: white;
+  color: rgb(107,142,35);
+  font-weight: 300;
 }
 
 h3 {
   font-size: 20px;
-  font-weight: 400;
-  color: rgb(107,142,35);
+  font-weight: 300;
+  color: white;
+  margin-top: 20px;
+  background-color: rgb(107,142,35);
+  text-align: center;
+  padding: 10px;
 }
 
 h4 {
@@ -61,15 +67,34 @@ input {
   margin-left: 15px;
 }
 
+.order {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 30px;
+  margin-left: 25px;
+  text-align: center;
+}
+
+.result {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 15px;
+  margin-left: 25px;
+  margin-right: -20px;
+}
+
+.resultHeadings {
+  background-color: rgb(107,142,35);
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
 .pizza {
   background-color: rgba(255, 255, 255, 0.9);
   padding: 10px;
   margin-top: 15px;
+  color: black;
 }
 
-.result {
-  display: none;
-  background-color: rgba(107,142,35, .8);
-  padding: 15px;
-  margin-left: 20px;
+img {
+  margin-right: 15px;
 }

@@ -74,7 +74,6 @@ $(document).ready(function(){
     pizza.displayPizza();
 
     $(".total").html(currency(order.total));
-    $(".result").show();
 
     $("input:radio[name=size]").prop('checked', false);
     $("input:radio[name=crust]").prop('checked', false);
