@@ -36,8 +36,8 @@ Pizza.prototype.calculateCost = function() {
 Pizza.prototype.displayPizza = function() {
   $(".orderTotal").before(
     "<div class='pizza'>" +
-    "<p><strong>Size: </strong>" + this.size + "<br>" +
-    "<strong>Crust: </strong>" + this.crust + "<br>" +
+    "<h4>" + this.size + "</h4>" +
+    "<p><strong>Crust: </strong>" + this.crust + "<br>" +
     "<strong>Toppings: </strong>" + this.toppings.join(", ") + "<br>" +
     "<strong>Extras: </strong>" + this.extras.join(", ") + "<br>" +
     "<strong>Cost: </strong>$" + currency(this.cost) + "</p>" +
@@ -67,34 +67,47 @@ $(document).ready(function(){
   var order = new Order();
   var pizza;
   var user;
+
   $("#pizzaForm").submit(function(event){
     event.preventDefault();
+    $(".sizeHelp").hide();
+    $(".crustHelp").hide();
+
     var size = $("input:radio[name=size]:checked").val();
     var crust = $("input:radio[name=crust]:checked").val();
     var toppings = [];
+    var extras = [];
+
     $("input:checkbox[name=topping]:checked").each(function(){
       var topping = $(this).val();
       toppings.push(topping);
     });
-    var extras = [];
     $("input:checkbox[name=extras]:checked").each(function(){
       var extra = $(this).val();
       extras.push(extra);
     });
 
-    pizza = new Pizza (size, crust, toppings, extras);
+    if (!size || !crust) {
+      if (!size){
+        $(".sizeHelp").show();
+      }
+      if (!crust){
+        $(".crustHelp").show();
+      }
+    } else {
+      pizza = new Pizza (size, crust, toppings, extras);
 
-    order.total += pizza.calculateCost();
-    order.addPizza(pizza);
-    pizza.displayPizza();
+      order.total += pizza.calculateCost();
+      order.addPizza(pizza);
+      pizza.displayPizza();
 
-    $(".total").html(currency(order.total));
+      $(".total").html(currency(order.total));
 
-    $("input:radio[name=size]").prop('checked', false);
-    $("input:radio[name=crust]").prop('checked', false);
-    $("input:checkbox[name=topping]").prop('checked', false)
-    $("input:checkbox[name=extras]").prop('checked', false)
-
+      $("input:radio[name=size]").prop('checked', false);
+      $("input:radio[name=crust]").prop('checked', false);
+      $("input:checkbox[name=topping]").prop('checked', false)
+      $("input:checkbox[name=extras]").prop('checked', false)
+    }
   });
 
   $("#checkout").click(function(){

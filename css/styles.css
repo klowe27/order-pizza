@@ -40,8 +40,25 @@ h3 {
   padding: 10px;
 }
 
+h4 {
+  color: rgb(107,142,35);
+}
+
 p {
   margin-bottom: 5px;
+}
+
+.sizeHelp {
+  display: none;
+}
+
+.crustHelp {
+  display: none;
+}
+
+.helpBlock {
+  font-style: italic;
+  color: red;
 }
 
 button {
@@ -80,9 +97,13 @@ input {
 }
 
 .pizza {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(220,220,220, .7);
   padding: 10px;
   margin-top: 15px;
+}
+
+.marginTop {
+  margin-top: 25px;
 }
 
 img {
@@ -107,4 +128,11 @@ img {
 
 label {
   margin-left: 15px;
+}
+
+.labelText {
+  font-weight: 500px;
+  font-size: 20px;
+  color: rgb(107,142,35);
+  margin: 5px 0px 1px 15px;
 }

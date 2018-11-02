@@ -15,7 +15,8 @@
           <h2>Customize your pizza</h2>
           <form id="pizzaForm">
             <div class="form-group">
-              <h3>Select size</h3>
+              <h3>Size</h3>
+              <div class="sizeHelp helpBlock">Please select one.</div>
               <div class="radio">
                 <label>
                   <input type="radio" name="size" value="Small">
@@ -36,7 +37,8 @@
               </div>
             </div>
               <div class="form-group">
-                <h3>Select crust</h3>
+                <h3>Crust</h3>
+                <div class="crustHelp helpBlock">Please select one.</div>
                 <div class="radio">
                   <label>
                     <input type="radio" name="crust" value="Thin">
@@ -51,7 +53,7 @@
                 </div>
               </div>
               <div class="form-group">
-               <h3>Select toppings</h3>
+               <h3>Toppings</h3>
                <p>First two toppings are free. Additional toppings $.50 each.</p>
                <span><strong>Meats: </strong></span>
                <input type="checkbox" name="topping" value="pepperoni"> Pepperoni
@@ -65,7 +67,7 @@
                <input type="checkbox" name="topping" value="pineapple"> Pineapple<br>
              </div>
              <div class="form-group">
-              <h3>Select extras</h3>
+              <h3>Extras</h3>
               <p>Additional $1.00 each.</p>
               <input type="checkbox" name="extras" value="sauce"> Sauce
               <input type="checkbox" name="extras" value="cheese"> Cheese
@@ -76,10 +78,9 @@
 
         <div class="col-md-3 result">
           <h3>Order Details</h3>
-          <div class="orderTotal">
-            <h3>Total: $<span class="total">0.00</span></h3>
-          </div>
-          <div class="center">
+          <div class="orderTotal"></div>
+          <div class="center marginTop">
+            <h2>Total: $<span class="total">0.00</span></h2>
             <button id="checkout">Checkout</button>
           </div>
         </div>
@@ -90,23 +91,23 @@
           <h3>Enter Delivery Address</h3>
           <form id="deliveryForm">
             <div class="form-group">
-              <label for="name">Name</label>
+              <label for="name" class="labelText">Name</label>
               <input id="name" type="text" class="form-control">
             </div>
             <div class="form-group">
-              <label for="street">Street</label>
+              <label for="street" class="labelText">Street</label>
               <input id="street" type="text" class="form-control">
             </div>
             <div class="form-group">
-              <label for="city">City</label>
+              <label for="city" class="labelText">City</label>
               <input id="city" type="text" class="form-control">
             </div>
             <div class="form-group">
-              <label for="state">State</label>
+              <label for="state" class="labelText">State</label>
               <input id="state" type="text" class="form-control">
             </div>
             <div class="form-group">
-              <label for="zip">Zip Code</label>
+              <label for="zip" class="labelText">Zip Code</label>
               <input id="zip" type="number" class="form-control">
             </div>
             <div class="center">
@@ -118,13 +119,12 @@
 
       <div id="reviewOrder" class="row">
         <h3>Order Details</h3>
-        <div class="orderTotal">
-          <h3>Total: $<span class="total">0.00</span></h3>
-        </div>
+        <div class="orderTotal"></div>
         <h3>Delivery Address</h3>
         <div class="deliveryAddress">
         </div>
-        <div class="center">
+        <div class="center marginTop">
+          <h2>Total: $<span class="total">0.00</span></h2>
           <button>Pay Now</button>
         </div>
       </div>
