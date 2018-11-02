@@ -62,13 +62,14 @@ $(document).ready(function(){
       var extra = $(this).val();
       extras.push(extra);
     });
+    
     var pizza = new Pizza (size, crust, toppings, extras);
+
     order.total += pizza.calculateCost();
     order.addPizza(pizza);
     pizza.displayPizza();
+
     $(".total").html(order.total);
-    console.log(pizza);
-    console.log(order);
 
   });
 });

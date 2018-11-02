@@ -1,0 +1,60 @@
+body {
+  background-image: url('../img/backgroundPizza.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: gray;
+  background-size: cover;
+  font-family: helvetica, sans-serif;
+  font-weight: lighter;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0px 0px 60px 60px;
+  margin-bottom: 75px;
+}
+
+h1 {
+  text-align: center;
+  background-color: rgba(107,142,35, .9);
+  color: white;
+  padding: 15px;
+  margin: 0px -600px 20px -600px;
+}
+
+h2 {
+  color: white;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 400;
+  color: rgb(107,142,35);
+}
+
+h4 {
+  color: white;
+}
+
+button {
+  border: none;
+  background-color: rgb(107,142,35);
+  color: white;
+  padding: 10px 15px 10px 15px;
+}
+
+button:hover{
+  background-color: gray;
+}
+
+.pizza {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  margin-top: 15px;
+}
+
+.result {
+  background-color: rgba(107,142,35, .8);
+  padding: 15px;
+  margin-left: 20px;
+}
