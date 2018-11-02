@@ -47,14 +47,11 @@ Pizza.prototype.calculateCost = function() {
 Pizza.prototype.displayPizza = function() {
   $(".orderTotal").before(
     "<div class='pizza'>" +
-    "<h4>" + this.size  + "<button id='show" + this.id + "'>View</button></h4>" +
+    "<h4>" + this.size  + "</h4>" +
+    "<p><strong>Crust: </strong>" + this.crust + "<br>" +
+    "<strong>Toppings: </strong>" + this.toppings.join(', ') + " (+$" + currency(this.toppingsCost) + ")<br>" +
+    "<strong>Extras: </strong>" + this.extras.join(', ') + " (+$" + currency(this.extrasCost) + ")<br>" +
     "<strong>Price: </strong>$" + currency(this.cost) + "</p>" +
-      "<div class='pizzaDetails pizzaDetails" + this.id + "'>" +
-      "<p><strong>Crust: </strong>" + this.crust + "<br>" +
-      "<strong>Toppings: </strong>" + this.toppings.join(', ') + " (+$" + currency(this.toppingsCost) + ")<br>" +
-      "<strong>Extras: </strong>" + this.extras.join(', ') + " (+$" + currency(this.extrasCost) + ")<br>" +
-      "<button id='hide" + this.id + "'>Hide</button>" +
-      "</div>" +
     "</div>"
   )
 }
@@ -78,28 +75,8 @@ function currency(value) {
   return Number.parseFloat(value).toFixed(2);
 }
 
-function attachClickListeners() {
-  $("#pizzaList").on("click", "button", function() {
-    $(".pizzaDetails").toggle();
-  });
-};
-
-// function addClickListeners(order){
-//   for (var i = 1; i <= order.currentId; i++ ){
-//     $("#show"+i).click(function(){
-//       $("#show"+i).hide();
-//     });
-//     $("#hide"+i).click(function(){
-//       $(".pizzaDetails"+i).slideUp();
-//       $("#show"+i).show();
-//     });
-//   }
-// }
-
 // User Interface Logic
 $(document).ready(function(){
-  attachClickListeners();
-
   var order = new Order();
   var pizza;
   var user;
