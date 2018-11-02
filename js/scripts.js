@@ -117,6 +117,12 @@ $(document).ready(function(){
 
   $("#deliveryForm").submit(function(event){
     event.preventDefault();
+    $("#name").removeClass("is-invalid");
+    $("#street").removeClass("is-invalid");
+    $("#city").removeClass("is-invalid");
+    $("#state").removeClass("is-invalid");
+    $("#zip").removeClass("is-invalid");
+
     var name = $("#name").val();
     var street = $("#street").val();
     var city = $("#city").val();
@@ -124,10 +130,28 @@ $(document).ready(function(){
     var zip = $("#zip").val();
     var address = street + " " + city + ", " + state + " " + zip;
 
-    user = new User(name, address);
+    if (!name || !street || !city || !state || !zip) {
+      if (!name){
+        $("#name").addClass("is-invalid");
+      }
+      if (!street){
+        $("#street").addClass("is-invalid");
+      }
+      if (!city){
+        $("#city").addClass("is-invalid");
+      }
+      if (!state){
+        $("#state").addClass("is-invalid");
+      }
+      if (!zip){
+        $("#zip").addClass("is-invalid");
+      }
+    } else {
+      user = new User(name, address);
 
-    $("#delivery").hide();
-    $("#reviewOrder").show();
-    user.displayUser();
+      $("#delivery").hide();
+      $("#reviewOrder").show();
+      user.displayUser();
+    }
   })
 });
