@@ -6,11 +6,19 @@
 
 ## Description
 
-This website lets users customize a pizza and see the cost of their pizza based on their pizza.
+This website lets users customize a pizza and see the cost of their pizza based on their pizza. Small pizzas are a base price of $8, mediums are $10 and larges are $12. Users get two toppings for free, but each additional topping is $.50. Extra sauce or extra cheese if $1.00 extra.
 
 ## Specifications
 
-* 
+* User can select the size of the pizza.
+  * Input: Small
+  * Output: $8
+* User can select all the toppings they'd like.
+  * Input: ["pepperoni", "onion", "sausage"]
+  * Output: Total + $.50
+* User can select any extras they would like.
+  * Input: ["cheese", "sauce"]
+  * Output: Total + $2.00
 
 ## Setup/Installation Requirements
 
