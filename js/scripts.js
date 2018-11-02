@@ -1,13 +1,21 @@
-// Business Logic
+// Business Logic for Order
 function Order() {
   this.pizzas = [];
   this.total = 0;
+  this.currentId = 0;
 }
 
 Order.prototype.addPizza = function(pizza) {
+  pizza.id = this.assignId();
   this.pizzas.push(pizza);
 }
 
+Order.prototype.assignId = function() {
+  this.currentId += 1;
+  return this.currentId;
+}
+
+// Business Logic for Pizza
 function Pizza(size, crust, toppings, extras) {
   this.size = size;
   this.crust = crust;
@@ -39,19 +47,19 @@ Pizza.prototype.calculateCost = function() {
 Pizza.prototype.displayPizza = function() {
   $(".orderTotal").before(
     "<div class='pizza'>" +
-    "<h4>" + this.size + "</h4>" +
-    "<p><strong>Crust: </strong>" + this.crust + "<br>" +
-    "<strong>Toppings: </strong>" + this.toppings.join(', ') + " (+$" + currency(this.toppingsCost) + ")<br>" +
-    "<strong>Extras: </strong>" + this.extras.join(', ') + " (+$" + currency(this.extrasCost) + ")<br>" +
+    "<h4>" + this.size  + "<button id='show" + this.id + "'>View</button></h4>" +
     "<strong>Price: </strong>$" + currency(this.cost) + "</p>" +
+      "<div class='pizzaDetails pizzaDetails" + this.id + "'>" +
+      "<p><strong>Crust: </strong>" + this.crust + "<br>" +
+      "<strong>Toppings: </strong>" + this.toppings.join(', ') + " (+$" + currency(this.toppingsCost) + ")<br>" +
+      "<strong>Extras: </strong>" + this.extras.join(', ') + " (+$" + currency(this.extrasCost) + ")<br>" +
+      "<button id='hide" + this.id + "'>Hide</button>" +
+      "</div>" +
     "</div>"
   )
 }
 
-function currency(value) {
-  return Number.parseFloat(value).toFixed(2);
-}
-
+// Business Logic for User
 function User(name, address){
   this.name = name;
   this.address = address;
@@ -65,8 +73,33 @@ User.prototype.displayUser = function(){
   "</div>")
 }
 
+// Business Logic
+function currency(value) {
+  return Number.parseFloat(value).toFixed(2);
+}
+
+function attachClickListeners() {
+  $("#pizzaList").on("click", "button", function() {
+    $(".pizzaDetails").toggle();
+  });
+};
+
+// function addClickListeners(order){
+//   for (var i = 1; i <= order.currentId; i++ ){
+//     $("#show"+i).click(function(){
+//       $("#show"+i).hide();
+//     });
+//     $("#hide"+i).click(function(){
+//       $(".pizzaDetails"+i).slideUp();
+//       $("#show"+i).show();
+//     });
+//   }
+// }
+
 // User Interface Logic
 $(document).ready(function(){
+  attachClickListeners();
+
   var order = new Order();
   var pizza;
   var user;
@@ -108,10 +141,10 @@ $(document).ready(function(){
 
       $("input:radio[name=size]").prop('checked', false);
       $("input:radio[name=crust]").prop('checked', false);
-      $("input:checkbox[name=topping]").prop('checked', false)
-      $("input:checkbox[name=extras]").prop('checked', false)
+      $("input:checkbox[name=topping]").prop('checked', false);
+      $("input:checkbox[name=extras]").prop('checked', false);
     }
-    console.log(pizza);
+
   });
 
   $("#checkout").click(function(){
