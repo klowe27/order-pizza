@@ -62,7 +62,7 @@ $(document).ready(function(){
       var extra = $(this).val();
       extras.push(extra);
     });
-    
+
     var pizza = new Pizza (size, crust, toppings, extras);
 
     order.total += pizza.calculateCost();
@@ -70,6 +70,11 @@ $(document).ready(function(){
     pizza.displayPizza();
 
     $(".total").html(order.total);
+
+    $("input:radio[name=size]").prop('checked', false);
+    $("input:radio[name=crust]").prop('checked', false);
+    $("input:checkbox[name=topping]").prop('checked', false)
+    $("input:checkbox[name=extras]").prop('checked', false)
 
   });
 });
