@@ -8,11 +8,36 @@ function Order() {
 Order.prototype.addPizza = function(pizza) {
   pizza.id = this.assignId();
   this.pizzas.push(pizza);
+  this.total += pizza.calculateCost();
 }
 
 Order.prototype.assignId = function() {
   this.currentId += 1;
   return this.currentId;
+}
+
+Order.prototype.findPizza = function(id) {
+  for (var i=0; i< this.pizzas.length; i++) {
+    if (this.pizzas[i]) {
+      if (this.pizzas[i].id == id) {
+        return this.pizzas[i];
+      }
+    }
+  };
+  return false;
+}
+
+Order.prototype.deletePizza = function(id) {
+  for (var i=0; i< this.pizzas.length; i++) {
+    if (this.pizzas[i]) {
+      if (this.pizzas[i].id == id) {
+        this.total -= this.pizzas[i].cost;
+        delete this.pizzas[i];
+        return true;
+      }
+    }
+  };
+  return false;
 }
 
 // Business Logic for Pizza
@@ -44,18 +69,6 @@ Pizza.prototype.calculateCost = function() {
   return this.cost;
 }
 
-Pizza.prototype.displayPizza = function() {
-  $(".orderTotal").before(
-    "<div class='pizza'>" +
-    "<h4>" + this.size  + "</h4>" +
-    "<p><strong>Crust: </strong>" + this.crust + "<br>" +
-    "<strong>Toppings: </strong>" + this.toppings.join(', ') + " (+$" + currency(this.toppingsCost) + ")<br>" +
-    "<strong>Extras: </strong>" + this.extras.join(', ') + " (+$" + currency(this.extrasCost) + ")<br>" +
-    "<strong>Price: </strong>$" + currency(this.cost) + "</p>" +
-    "</div>"
-  )
-}
-
 // Business Logic for User
 function User(name, address){
   this.name = name;
@@ -75,11 +88,45 @@ function currency(value) {
   return Number.parseFloat(value).toFixed(2);
 }
 
+function attachClickListeners(order) {
+  $(".pizzaList").on("click", ".viewButton", function() {
+    showPizzaDetails(this.id);
+  });
+  $(".pizzaList").on("click", ".deleteButton", function() {
+    order.deletePizza(this.id);
+    displayPizzas(order);
+  });
+};
+
+function displayPizzas(order) {
+  var pizzaList = $(".pizzas");
+  var htmlForPizzas = "";
+  order.pizzas.forEach(function(pizza) {
+    htmlForPizzas += "<div class='pizza'>" +
+    "<h4>" + pizza.size +" Pizza</h4>" + "<button class='viewButton viewButton" + pizza.id + "' id='" + pizza.id + "'>View</button>" + "<button class='deleteButton' id='" + pizza.id + "'>Delete</button>" +
+    "<p><strong>Price: </strong>$" + currency(pizza.cost) + "</p>" +
+      "<div class='pizzaDetails details" + pizza.id + "'>" +
+        "<p><strong>Crust: </strong>" + pizza.crust + "<br>" +
+        "<strong>Toppings: </strong>" + pizza.toppings.join(', ') + " (+$" + currency(pizza.toppingsCost) + ")<br>" +
+        "<strong>Extras: </strong>" + pizza.extras.join(', ') + " (+$" + currency(pizza.extrasCost) + ")</p>" +
+      "</div>" +
+    "</div>"
+  });
+  pizzaList.html(htmlForPizzas);
+  $(".total").html(currency(order.total));
+};
+
+function showPizzaDetails(id) {
+  $('.details' + id).slideToggle();
+};
+
+
 // User Interface Logic
 $(document).ready(function(){
   var order = new Order();
-  var pizza;
   var user;
+  var pizza;
+  attachClickListeners(order);
 
   $("#pizzaForm").submit(function(event){
     event.preventDefault();
@@ -109,12 +156,10 @@ $(document).ready(function(){
       }
     } else {
       pizza = new Pizza (size, crust, toppings, extras);
+      console.log(pizza);
 
-      order.total += pizza.calculateCost();
       order.addPizza(pizza);
-      pizza.displayPizza();
-
-      $(".total").html(currency(order.total));
+      displayPizzas(order);
 
       $("input:radio[name=size]").prop('checked', false);
       $("input:radio[name=crust]").prop('checked', false);
